@@ -3,7 +3,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CreatePdfSection } from '@/components/CreatePdfSection';
 import { OcrSection } from '@/components/OcrSection';
 import { MergePdfSection } from '@/components/MergePdfSection';
-import { FileText, FileSearch, FilePlus } from 'lucide-react';
+import { SplitPdfSection } from '@/components/SplitPdfSection';
+import { FileText, FileSearch, FilePlus, Scissors } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -14,13 +15,13 @@ const Index = () => {
             PDF Tools Pro
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Crie, extraia e mescle documentos PDF com facilidade
+            Crie, extraia, mescle e separe documentos PDF com facilidade
           </p>
         </header>
 
         <div className="max-w-4xl mx-auto">
           <Tabs defaultValue="create" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="create" className="flex items-center gap-2">
                 <FileText className="h-4 w-4" />
                 <span className="hidden sm:inline">Criar PDF</span>
@@ -32,6 +33,10 @@ const Index = () => {
               <TabsTrigger value="merge" className="flex items-center gap-2">
                 <FilePlus className="h-4 w-4" />
                 <span className="hidden sm:inline">Mesclar PDFs</span>
+              </TabsTrigger>
+              <TabsTrigger value="split" className="flex items-center gap-2">
+                <Scissors className="h-4 w-4" />
+                <span className="hidden sm:inline">Separar PDF</span>
               </TabsTrigger>
             </TabsList>
 
@@ -45,6 +50,10 @@ const Index = () => {
 
             <TabsContent value="merge" className="mt-0">
               <MergePdfSection />
+            </TabsContent>
+
+            <TabsContent value="split" className="mt-0">
+              <SplitPdfSection />
             </TabsContent>
           </Tabs>
         </div>
