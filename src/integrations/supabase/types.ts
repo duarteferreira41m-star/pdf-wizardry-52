@@ -14,7 +14,134 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      monitoring_logs: {
+        Row: {
+          completed_at: string | null
+          error_message: string | null
+          id: string
+          results_count: number | null
+          started_at: string
+          status: string
+        }
+        Insert: {
+          completed_at?: string | null
+          error_message?: string | null
+          id?: string
+          results_count?: number | null
+          started_at?: string
+          status?: string
+        }
+        Update: {
+          completed_at?: string | null
+          error_message?: string | null
+          id?: string
+          results_count?: number | null
+          started_at?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          notification_enabled: boolean | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id?: string
+          notification_enabled?: boolean | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          notification_enabled?: boolean | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      search_results: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          publication_date: string
+          search_term_id: string
+          source_url: string | null
+          title: string | null
+          user_id: string
+          was_notified: boolean | null
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          publication_date: string
+          search_term_id: string
+          source_url?: string | null
+          title?: string | null
+          user_id: string
+          was_notified?: boolean | null
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          publication_date?: string
+          search_term_id?: string
+          source_url?: string | null
+          title?: string | null
+          user_id?: string
+          was_notified?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "search_results_search_term_id_fkey"
+            columns: ["search_term_id"]
+            isOneToOne: false
+            referencedRelation: "search_terms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      search_terms: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean | null
+          term: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          term: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          term?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
