@@ -1,1 +1,4 @@
 project_id = "ybzccnxsacvlaulmhdmj"
+
+[functions.scrape-diario-oficial]
+verify_jwt = false
